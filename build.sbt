@@ -1,4 +1,4 @@
-lazy val root = project
+lazy val ScalaDebuggerAkka = project
   .in(file("."))
   .configs(IntegrationTest)
   .settings(Defaults.itSettings: _*)
