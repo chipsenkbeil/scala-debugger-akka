@@ -7,6 +7,7 @@ import akka.actor._
 import com.senkbeil.debugger.virtualmachines.ScalaVirtualMachine
 import com.senkbeil.debugger.{ListeningDebugger, Debugger, LaunchingDebugger}
 import com.senkbeil.debugger.events.LoopingTaskRunner
+import com.typesafe.config.ConfigValueType
 
 object ScalaDebuggerAkkaExtension
   extends ExtensionId[ScalaDebuggerAkkaExtensionImpl]
@@ -45,6 +46,20 @@ class ScalaDebuggerAkkaExtensionImpl(private val actorSystem: ActorSystem)
 {
   /** Represents the configuration for the associated actor system. */
   private val config = actorSystem.settings.config
+
+  // TODO: REMOVE THIS AFTER FIGURE OUT HOW TO PARSE
+  import scala.collection.JavaConverters._
+  config.getConfig("messages").root().asScala.foreach { case (name, value) =>
+    println("NAME: " + name)
+    value.valueType() match {
+      case ConfigValueType.BOOLEAN => value.unwrapped().asInstanceOf[Boolean]
+      case ConfigValueType.NULL => ???
+      case ConfigValueType.NUMBER => value.unwrapped()
+      case ConfigValueType.STRING => value.unwrapped().asInstanceOf[String]
+      case ConfigValueType.LIST => ??? // List[Object]
+      case ConfigValueType.OBJECT => ??? // Map[String, Object]
+    }
+  }
 
   /** Represents the maximum threads to use for a single task runner. */
   private val maxThreads = {
