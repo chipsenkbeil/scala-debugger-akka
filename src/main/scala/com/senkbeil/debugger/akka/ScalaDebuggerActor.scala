@@ -7,6 +7,6 @@ class ScalaDebuggerActor private (private val debugger: Debugger)
   extends Actor
 {
   override def receive: Receive = {
-
+    case _ =>
   }
 }
