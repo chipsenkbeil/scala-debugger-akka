@@ -3,7 +3,7 @@ lazy val ScalaDebuggerAkka = project
   .configs(IntegrationTest)
   .settings(Defaults.itSettings: _*)
   .settings(
-    name := "ScalaDebuggerAkka",
+    name := "scala-debugger-akka",
 
     version := "1.0.0",
 
