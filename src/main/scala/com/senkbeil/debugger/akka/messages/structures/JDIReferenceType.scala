@@ -22,7 +22,8 @@ case class JDIReferenceType(
   override val majorVersion: Option[Int],
   override val methods: Option[Seq[JDIMethod]],
   override val minorVersion: Option[Int],
-  override val name: Option[String],
+  override val name: Option[String]
+)(
   override val nestedTypes: Option[Seq[JDIReferenceType]],
   override val sourceDebugExtension: Option[String],
   override val sourceName: Option[String],
