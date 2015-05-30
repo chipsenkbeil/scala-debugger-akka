@@ -2,7 +2,8 @@ package com.senkbeil.debugger.akka.messages.structures
 
 // NOTE: This pain point (22 argument limit) is fixed in Scala 2.11
 //  val   val   val  https://github.com/scala/scala/pull/2305
-/*case*/ class JDIReferenceType(
+/*case*/ class JDIArrayType(
+  // Inherited
   val allFields:            Option[Seq[JDIField]]         = None,
   val allLineLocations:     Option[Seq[JDILocation]]      = None,
   val allMethods:           Option[Seq[JDIMethod]]        = None,
@@ -35,6 +36,11 @@ package com.senkbeil.debugger.akka.messages.structures
   val sourceDebugExtension: Option[String]                = None,
   val sourceName:           Option[String]                = None,
   val visibleFields:        Option[Seq[JDIField]]         = None,
-  val visibleMethods:       Option[Seq[JDIMethod]]        = None
+  val visibleMethods:       Option[Seq[JDIMethod]]        = None,
+
+  // Specific
+  val componentSignature:   Option[String]                = None,
+  val componentType:        Option[String]                = None,
+  val componentTypeName:    Option[String]                = None
 ) extends JDIReferenceTypeLike
 

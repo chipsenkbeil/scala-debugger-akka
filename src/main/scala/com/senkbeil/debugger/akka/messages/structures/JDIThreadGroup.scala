@@ -1,14 +1,14 @@
 package com.senkbeil.debugger.akka.messages.structures
 
 case class JDIThreadGroup(
-  entryCount: Option[Int],
-  isCollected: Option[Boolean],
-  owningThread: Option[JDIThread],
-  referenceType: Option[JDIReferenceType],
-  uniqueId: Option[Long],
-  waitingThreads: Option[Seq[JDIThread]],
-  name: Option[String],
-  parent: Option[JDIThreadGroup],
-  threadGroups: Option[Seq[JDIThreadGroup]],
-  threads: Option[Seq[JDIThread]]
+  entryCount:     Option[Int]                 = None,
+  isCollected:    Option[Boolean]             = None,
+  owningThread:   Option[JDIThread]           = None,
+  referenceType:  Option[JDIReferenceType]    = None,
+  uniqueId:       Option[Long]                = None,
+  waitingThreads: Option[Seq[JDIThread]]      = None,
+  name:           Option[String]              = None,
+  parent:         Option[JDIThreadGroup]      = None,
+  threadGroups:   Option[Seq[JDIThreadGroup]] = None,
+  threads:        Option[Seq[JDIThread]]      = None
 ) extends JDIObjectLike

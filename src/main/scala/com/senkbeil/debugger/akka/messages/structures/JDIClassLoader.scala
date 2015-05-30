@@ -1,13 +1,13 @@
 package com.senkbeil.debugger.akka.messages.structures
 
 case class JDIClassLoader(
-  entryCount: Option[Int],
-  isCollected: Option[Boolean],
-  owningThread: Option[JDIThread],
-  referenceType: Option[JDIReferenceType],
-  uniqueId: Option[Long],
-  waitingThreads: Option[Seq[JDIThread]],
-  definedClasses: Option[Seq[JDIReferenceType]],
-  visibleClasses: Option[Seq[JDIReferenceType]]
+  entryCount:     Option[Int]                   = None,
+  isCollected:    Option[Boolean]               = None,
+  owningThread:   Option[JDIThread]             = None,
+  referenceType:  Option[JDIReferenceType]      = None,
+  uniqueId:       Option[Long]                  = None,
+  waitingThreads: Option[Seq[JDIThread]]        = None,
+  definedClasses: Option[Seq[JDIReferenceType]] = None,
+  visibleClasses: Option[Seq[JDIReferenceType]] = None
 ) extends JDIObjectLike
 

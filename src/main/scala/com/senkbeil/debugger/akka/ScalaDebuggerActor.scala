@@ -9,35 +9,5 @@ class ScalaDebuggerActor private (private val debugger: Debugger)
 {
   override def receive: Receive = {
     case _ =>
-      JDIReferenceType(
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-        None
-      )(
-        None,
-        None,
-        None,
-        None,
-        None
-      )
   }
 }
