@@ -1,3 +1,3 @@
 package com.senkbeil.debugger.akka.messages
 
-case class VMDeathMessage()
+case class VMDeathMessage() extends MessageLike

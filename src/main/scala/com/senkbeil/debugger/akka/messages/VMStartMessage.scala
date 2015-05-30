@@ -4,4 +4,4 @@ import com.senkbeil.debugger.akka.messages.structures.JDIThread
 
 case class VMStartMessage(
   thread: Option[JDIThread] = None
-)
+) extends MessageLike

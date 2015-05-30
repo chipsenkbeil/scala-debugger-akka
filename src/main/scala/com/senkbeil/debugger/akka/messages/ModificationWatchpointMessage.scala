@@ -9,4 +9,4 @@ case class ModificationWatchpointMessage(
   `object`:     Option[JDIObject]   = None,
   valueCurrent: Option[JDIValue]    = None,
   valueToBe:    Option[JDIValue]    = None
-) extends WatchpointMessageLike
+) extends WatchpointMessageLike with MessageLike

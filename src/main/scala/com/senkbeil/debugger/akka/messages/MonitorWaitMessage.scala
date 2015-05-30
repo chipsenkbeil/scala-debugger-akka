@@ -7,4 +7,4 @@ case class MonitorWaitMessage(
   location: Option[JDILocation] = None,
   monitor:  Option[JDIObject]   = None,
   timeout:  Option[Long]        = None
-) extends LocatableMessageLike
+) extends LocatableMessageLike with MessageLike

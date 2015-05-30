@@ -6,4 +6,4 @@ case class MonitorContendedEnteredMessage(
   thread:   Option[JDIThread]   = None,
   location: Option[JDILocation] = None,
   monitor:  Option[JDIObject]   = None
-) extends LocatableMessageLike
+) extends LocatableMessageLike with MessageLike

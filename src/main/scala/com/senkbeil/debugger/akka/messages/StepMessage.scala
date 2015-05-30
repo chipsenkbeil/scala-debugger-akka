@@ -5,4 +5,4 @@ import com.senkbeil.debugger.akka.messages.structures.{JDILocation, JDIThread}
 case class StepMessage(
   thread:   Option[JDIThread]   = None,
   location: Option[JDILocation] = None
-) extends LocatableMessageLike
+) extends LocatableMessageLike with MessageLike

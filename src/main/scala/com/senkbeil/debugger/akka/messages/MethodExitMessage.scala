@@ -7,5 +7,5 @@ case class MethodExitMessage(
   location:     Option[JDILocation] = None,
   method:       Option[JDIMethod]   = None,
   returnValue:  Option[JDIValue]    = None
-) extends LocatableMessageLike
+) extends LocatableMessageLike with MessageLike
 

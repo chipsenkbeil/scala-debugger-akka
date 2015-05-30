@@ -6,5 +6,5 @@ case class MethodEntryMessage(
   thread:   Option[JDIThread]   = None,
   location: Option[JDILocation] = None,
   method:   Option[JDIMethod]   = None
-) extends LocatableMessageLike
+) extends LocatableMessageLike with MessageLike
 

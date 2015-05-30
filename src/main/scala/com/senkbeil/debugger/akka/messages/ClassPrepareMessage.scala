@@ -5,4 +5,4 @@ import com.senkbeil.debugger.akka.messages.structures.{JDIThread, JDIReferenceTy
 case class ClassPrepareMessage(
   referenceType:  Option[JDIReferenceType]  = None,
   thread:         Option[JDIThread]         = None
-)
+) extends MessageLike

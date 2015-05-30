@@ -8,4 +8,4 @@ case class AccessWatchpointMessage(
   field:        Option[JDIField]    = None,
   `object`:     Option[JDIObject]   = None,
   valueCurrent: Option[JDIValue]    = None
-) extends WatchpointMessageLike
+) extends WatchpointMessageLike with MessageLike

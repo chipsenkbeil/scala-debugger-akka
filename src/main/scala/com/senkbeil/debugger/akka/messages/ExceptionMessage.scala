@@ -7,5 +7,5 @@ case class ExceptionMessage(
   location:       Option[JDILocation] = None,
   catchLocation:  Option[JDILocation] = None,
   exception:      Option[JDIObject]   = None
-) extends LocatableMessageLike
+) extends LocatableMessageLike with MessageLike
 
