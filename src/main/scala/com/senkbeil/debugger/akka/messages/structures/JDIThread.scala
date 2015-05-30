@@ -1,12 +1,12 @@
 package com.senkbeil.debugger.akka.messages.structures
 
 case class JDIThread(
-  override val entryCount: Option[Int],
-  override val isCollected: Option[Boolean],
-  override val owningThread: Option[JDIThread],
-  override val referenceType: Option[JDIReferenceType],
-  override val uniqueId: Option[Long],
-  override val waitingThreads: Option[Seq[JDIThread]],
+  entryCount: Option[Int],
+  isCollected: Option[Boolean],
+  owningThread: Option[JDIThread],
+  referenceType: Option[JDIReferenceType],
+  uniqueId: Option[Long],
+  waitingThreads: Option[Seq[JDIThread]],
   currentContendedMonitor: Option[JDIObject],
   frameCount: Option[Int],
   frames: Option[Seq[JDIStackFrame]],
@@ -18,11 +18,4 @@ case class JDIThread(
   status: Option[Int],
   suspendCount: Option[Int],
   threadGroup: Option[JDIThreadGroup]
-) extends JDIAbstractObject(
-  entryCount      = entryCount,
-  isCollected     = isCollected,
-  owningThread    = owningThread,
-  referenceType   = referenceType,
-  uniqueId        = uniqueId,
-  waitingThreads  = waitingThreads
-)
+) extends JDIObjectLike
