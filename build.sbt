@@ -36,6 +36,8 @@ lazy val ScalaDebuggerAkka = project
     testOptions in Test += Tests.Argument("-oDF"),
 
     libraryDependencies ++= Seq(
+      // TODO: Figure out why IntelliJ keeps inserting scala-reflect 2.10.4
+      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
       "com.senkbeil" %% "debugger-api" % "1.0.0",
       "com.typesafe.akka" %% "akka-actor" % "2.3.11",
       "org.scalatest" %% "scalatest" % "2.2.1" % "test,it",
