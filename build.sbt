@@ -7,17 +7,29 @@ lazy val ScalaDebuggerAkka = project
 
     version := "1.0.0",
 
-    organization := "com.senkbeil",
+    organization := "org.senkbeil",
 
     licenses += (
       "Apache-2.0",
       url("https://www.apache.org/licenses/LICENSE-2.0.html")
     ),
 
+    homepage := Some(url("http://www.senkbeil.org/")),
+
     // Default version when not cross-compiling
     scalaVersion := "2.10.5",
 
     crossScalaVersions := Seq("2.10.5", "2.11.6"),
+
+    libraryDependencies ++= Seq(
+      // TODO: Figure out why IntelliJ keeps inserting scala-reflect 2.10.4
+      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
+      "com.senkbeil" %% "scala-debugger-api" % "1.0.0",
+      "com.typesafe.akka" %% "akka-actor" % "2.3.11",
+      "org.scalatest" %% "scalatest" % "2.2.1" % "test,it",
+      "org.scalamock" %% "scalamock-scalatest-support" % "3.2.1" % "test,it",
+      "com.typesafe.akka" %% "akka-testkit" % "2.3.11" % "test,it"
+    )
 
     scalacOptions ++= Seq(
       "-encoding", "UTF-8", "-target:jvm-1.6",
@@ -35,13 +47,30 @@ lazy val ScalaDebuggerAkka = project
 
     testOptions in Test += Tests.Argument("-oDF"),
 
-    libraryDependencies ++= Seq(
-      // TODO: Figure out why IntelliJ keeps inserting scala-reflect 2.10.4
-      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-      "com.senkbeil" %% "debugger-api" % "1.0.0",
-      "com.typesafe.akka" %% "akka-actor" % "2.3.11",
-      "org.scalatest" %% "scalatest" % "2.2.1" % "test,it",
-      "org.scalamock" %% "scalamock-scalatest-support" % "3.2.1" % "test,it",
-      "com.typesafe.akka" %% "akka-testkit" % "2.3.11" % "test,it"
-    )
+    // Prevent publishing test artifacts
+    publishArtifact in Test := false,
+
+    publishMavenStyle := true,
+
+    pomExtra := (
+      <scm>
+        <url>git@github.com:rcsenkbeil/scala-debugger-akka.git</url>
+        <connection>scm:git:git@github.com:rcsenkbeil/scala-debugger-akka.git</connection>
+      </scm>
+      <developers>
+        <developer>
+          <id>senkwich</id>
+          <name>Chip Senkbeil</name>
+          <url>http://www.senkbeil.org</url>
+        </developer>
+      </developers>
+    ),
+
+    publishTo := {
+      val nexus = "https://oss.sonatype.org/"
+      if (isSnapshot.value)
+        Some("snapshots" at nexus + "content/repositories/snapshots")
+      else
+        Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+    }
   )
