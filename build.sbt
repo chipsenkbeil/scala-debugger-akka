@@ -24,12 +24,23 @@ lazy val ScalaDebuggerAkka = project
     libraryDependencies ++= Seq(
       // TODO: Figure out why IntelliJ keeps inserting scala-reflect 2.10.4
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-      "com.senkbeil" %% "scala-debugger-api" % "1.0.0",
+      "org.senkbeil" %% "scala-debugger-api" % "1.0.0",
       "com.typesafe.akka" %% "akka-actor" % "2.3.11",
       "org.scalatest" %% "scalatest" % "2.2.1" % "test,it",
       "org.scalamock" %% "scalamock-scalatest-support" % "3.2.1" % "test,it",
       "com.typesafe.akka" %% "akka-testkit" % "2.3.11" % "test,it"
-    )
+    ),
+
+    // JDK Dependency (just for sbt, must exist on classpath for execution,
+    // cannot be redistributed)
+    internalDependencyClasspath in Compile +=
+      { Attributed.blank(Build.JavaTools) },
+    internalDependencyClasspath in Runtime +=
+      { Attributed.blank(Build.JavaTools) },
+    internalDependencyClasspath in Test +=
+      { Attributed.blank(Build.JavaTools) },
+    internalDependencyClasspath in IntegrationTest +=
+      { Attributed.blank(Build.JavaTools) },
 
     scalacOptions ++= Seq(
       "-encoding", "UTF-8", "-target:jvm-1.6",
@@ -46,6 +57,9 @@ lazy val ScalaDebuggerAkka = project
     ),
 
     testOptions in Test += Tests.Argument("-oDF"),
+
+    // Properly handle Scaladoc mappings
+    autoAPIMappings := true,
 
     // Prevent publishing test artifacts
     publishArtifact in Test := false,
