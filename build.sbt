@@ -21,6 +21,9 @@ lazy val ScalaDebuggerAkka = project
 
     crossScalaVersions := Seq("2.10.5", "2.11.6"),
 
+    // Enable compiling scala-2.10 and scala-2.11 specific code
+    crossPaths := true,
+
     libraryDependencies ++= Seq(
       // TODO: Figure out why IntelliJ keeps inserting scala-reflect 2.10.4
       "org.scala-lang" % "scala-reflect" % scalaVersion.value,
@@ -66,7 +69,7 @@ lazy val ScalaDebuggerAkka = project
 
     publishMavenStyle := true,
 
-    pomExtra := (
+    pomExtra :=
       <scm>
         <url>git@github.com:rcsenkbeil/scala-debugger-akka.git</url>
         <connection>scm:git:git@github.com:rcsenkbeil/scala-debugger-akka.git</connection>
@@ -77,8 +80,7 @@ lazy val ScalaDebuggerAkka = project
           <name>Chip Senkbeil</name>
           <url>http://www.senkbeil.org</url>
         </developer>
-      </developers>
-    ),
+      </developers>,
 
     publishTo := {
       val nexus = "https://oss.sonatype.org/"
